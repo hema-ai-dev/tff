@@ -1,0 +1,6 @@
+client_id,source_local_samples,train_samples,val_samples,test_samples,best_epoch,best_val_accuracy,test_loss,test_accuracy,overall_accuracy_from_predictions,macro_class_accuracy,selected_checkpoint
+0,7842,7060,782,12630,29,0.7071611285209656,1.2765569686889648,0.5876484513282776,0.5876484560570071,0.47779233849886016,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_nobn_seed20260720/client_0/checkpoints/best.h5
+1,7842,7060,782,12630,30,0.7404091954231262,1.289792537689209,0.5952494144439697,0.5952494061757719,0.4901008518594464,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_nobn_seed20260720/client_1/checkpoints/best.h5
+2,7841,7059,782,12630,30,0.7468030452728271,1.2805004119873047,0.6121140122413635,0.6121140142517815,0.5088472339273653,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_nobn_seed20260720/client_2/checkpoints/best.h5
+3,7842,7060,782,12630,30,0.7340153455734253,1.2650038003921509,0.5961995124816895,0.5961995249406176,0.4913266704927473,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_nobn_seed20260720/client_3/checkpoints/best.h5
+4,7842,7060,782,12630,30,0.7301790118217468,1.1963435411453247,0.6140934228897095,0.6140934283452099,0.5156206292677475,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_nobn_seed20260720/client_4/checkpoints/best.h5

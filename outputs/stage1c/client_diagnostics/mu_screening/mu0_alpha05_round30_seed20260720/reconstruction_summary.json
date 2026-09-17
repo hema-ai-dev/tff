@@ -1,0 +1,23 @@
+{
+  "reference_run_dir": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1c/lr_confirmation/sgd_mu0_lr0p1_alpha05_30r_seed20260720",
+  "round": 30,
+  "proximal_strength": 0.0,
+  "num_clients": 5,
+  "total_client_examples": 35277,
+  "global_weight_l2_norm": 19.320052200743987,
+  "weighted_mean_client_distance": 1.3757000045063,
+  "weighted_mean_relative_client_distance": 0.07120581198291608,
+  "weighted_mean_final_proximal_penalty": 0.0,
+  "min_client_distance": 1.2846456153671646,
+  "max_client_distance": 1.4486281077157246,
+  "std_client_distance_population": 0.05707712327710733,
+  "reconstruction": {
+    "tensor_count_equal": true,
+    "exact": false,
+    "allclose": true,
+    "max_abs_diff": 2.9074941898521445e-08,
+    "mean_abs_diff": 9.502290428157726e-10,
+    "l2_diff": 4.973116801727546e-07
+  },
+  "interpretation_note": "final_proximal_penalty is evaluated at the final client model; it is not the average per-batch proximal loss."
+}

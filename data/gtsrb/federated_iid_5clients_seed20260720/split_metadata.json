@@ -1,0 +1,31 @@
+{
+  "dataset": "GTSRB",
+  "stage": "1A",
+  "split_type": "stratified_iid",
+  "description": "Each class is independently shuffled and distributed approximately evenly across all clients.",
+  "data_root": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb",
+  "train_csv": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/Train.csv",
+  "test_csv": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/Test.csv",
+  "output_dir": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_iid_5clients_seed20260720",
+  "num_clients": 5,
+  "num_classes": 43,
+  "seed": 20260720,
+  "num_train_samples": 39209,
+  "num_test_samples": 12630,
+  "client_num_samples": {
+    "0": 7842,
+    "1": 7842,
+    "2": 7841,
+    "3": 7842,
+    "4": 7842
+  },
+  "train_label_column": "ClassId",
+  "train_path_column": "Path",
+  "test_label_column": "ClassId",
+  "test_path_column": "Path",
+  "all_clients_have_all_classes": true,
+  "clients_are_disjoint": true,
+  "client_union_equals_full_train": true,
+  "global_test_is_official_test_csv": true,
+  "split_sha256": "867a3e579ef978471d14944f700363f0ffd3879ccc0406738c03ffad0eb3d22a"
+}

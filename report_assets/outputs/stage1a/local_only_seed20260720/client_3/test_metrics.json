@@ -1,0 +1,14 @@
+{
+  "client_id": 3,
+  "source_local_samples": 7842,
+  "train_samples": 7060,
+  "val_samples": 782,
+  "test_samples": 12630,
+  "best_epoch": 28,
+  "best_val_accuracy": 0.9667519330978394,
+  "test_loss": 0.32594892382621765,
+  "test_accuracy": 0.9171021580696106,
+  "overall_accuracy_from_predictions": 0.9171021377672209,
+  "macro_class_accuracy": 0.8858385236453994,
+  "selected_checkpoint": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_seed20260720/client_3/checkpoints/best.h5"
+}

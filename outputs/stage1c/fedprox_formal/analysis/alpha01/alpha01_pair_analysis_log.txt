@@ -1,0 +1,8 @@
+========================================================================================
+[PASS] alpha=0.1 配对分析完成
+per_class_csv              = outputs/stage1c/fedprox_formal/analysis/alpha01/alpha01_per_class_mu0_vs_mu0p1.csv
+confusion_comparison_csv   = outputs/stage1c/fedprox_formal/analysis/alpha01/alpha01_confusion_pair_comparison.csv
+classification_summary     = outputs/stage1c/fedprox_formal/analysis/alpha01/alpha01_classification_summary.json
+pair_summary_markdown      = outputs/stage1c/fedprox_formal/analysis/alpha01/alpha01_pair_summary.md
+plots_dir                  = outputs/stage1c/fedprox_formal/analysis/alpha01/plots
+========================================================================================

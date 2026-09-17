@@ -1,0 +1,10 @@
+========================================================================================
+[PASS] Stage 1C-A1 FedProx finalization complete
+cross_alpha_csv     = outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.csv
+cross_alpha_json    = outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.json
+cross_alpha_md      = outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.md
+technical_report    = outputs/stage1c/fedprox_formal/Stage1C_A1_FedProx_Technical_Report_v1.0.md
+manifest_json       = outputs/stage1c/fedprox_formal/analysis/stage1ca1_artifact_manifest.json
+manifest_csv        = outputs/stage1c/fedprox_formal/analysis/stage1ca1_artifact_manifest.csv
+closure_audit       = outputs/stage1c/fedprox_formal/analysis/stage1ca1_closure_audit.txt
+========================================================================================

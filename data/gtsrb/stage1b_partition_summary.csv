@@ -1,0 +1,5 @@
+partition_dir,alpha,mean_js_divergence,min_client_samples,max_client_samples,min_present_classes,max_present_classes,max_largest_class_ratio
+federated_dirichlet_alpha10_5clients_seed20260720,10.0,0.008459824517707932,7063,8558,43,43,0.0848731999490251
+federated_dirichlet_alpha1_5clients_seed20260720,1.0,0.08800943199501866,6630,10641,40,43,0.1881743634009495
+federated_dirichlet_alpha05_5clients_seed20260720,0.5,0.13379228072496496,7051,8711,36,40,0.23032194015033328
+federated_dirichlet_alpha01_5clients_seed20260720,0.1,0.3147750952931487,5748,10815,16,24,0.36012526096033404

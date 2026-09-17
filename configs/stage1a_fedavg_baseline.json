@@ -1,0 +1,481 @@
+{
+  "schema": {
+    "name": "stage1a_fedavg_baseline",
+    "version": "1.0.0",
+    "status": "frozen_for_stage1b",
+    "created_at_utc": "2026-07-21T13:17:41.269802+00:00"
+  },
+  "purpose": "Machine-readable frozen Stage 1A FedAvg baseline for controlled Stage 1B Non-IID experiments.",
+  "control_policy": {
+    "rule": "All fields in frozen_configuration remain unchanged unless explicitly listed in allowed_stage1b_changes.",
+    "allowed_stage1b_changes": [
+      "partition.type",
+      "partition.dirichlet_alpha",
+      "partition.partition_seed for an intentional repeated run",
+      "partition.minimum_samples_per_client",
+      "partition.minimum_classes_per_client",
+      "partition.max_resampling_attempts",
+      "partition.output_root",
+      "partition.realized_client_sample_counts",
+      "partition.realized_client_class_distribution",
+      "experiment.name",
+      "experiment.stage1b_substage",
+      "experiment.notes"
+    ],
+    "forbidden_without_new_ablation": [
+      "model architecture",
+      "BatchNorm setting",
+      "image size",
+      "normalization",
+      "augmentation",
+      "batch size",
+      "local epochs",
+      "client optimizer",
+      "client learning rate",
+      "server optimizer",
+      "server learning rate",
+      "client weighting",
+      "clients per round",
+      "number of clients",
+      "validation ratio",
+      "loss",
+      "metrics",
+      "official test set",
+      "checkpoint selection rule"
+    ],
+    "stage1b_round_budget": {
+      "fixed_max_rounds": 160,
+      "report_checkpoints": [
+        30,
+        60,
+        100,
+        160
+      ],
+      "final_selection": "best validation round within the same 160-round budget"
+    }
+  },
+  "frozen_configuration_sha256": "beec4563cac296b159764c79a71d5066f1428559c8ba8d9a4ede5a87d07ed534",
+  "frozen_configuration_sha256_scope": "Canonical UTF-8 JSON of frozen_configuration only, sorted keys, no whitespace.",
+  "frozen_configuration": {
+    "environment": {
+      "python": "3.10",
+      "tensorflow": "2.14.1",
+      "tensorflow_federated": "0.87.0",
+      "conda_env": "tff",
+      "execution_context": {
+        "backend": "TFF native local C++",
+        "max_concurrent_computation_calls": 1,
+        "gpu_required": false,
+        "cpu_allowed": true
+      }
+    },
+    "task": {
+      "type": "single-label multiclass image classification",
+      "dataset": "GTSRB",
+      "num_classes": 43,
+      "label_range": [
+        0,
+        42
+      ],
+      "path_column": "Path",
+      "label_column": "ClassId",
+      "output": "43 logits"
+    },
+    "dataset": {
+      "root": "data/gtsrb",
+      "train_csv": "data/gtsrb/Train.csv",
+      "test_csv": "data/gtsrb/Test.csv",
+      "official_train_samples": 39209,
+      "official_test_samples": 12630,
+      "test_policy": {
+        "used_for_training": false,
+        "used_for_validation": false,
+        "used_for_checkpoint_selection": false,
+        "used_only_for_final_evaluation": true
+      }
+    },
+    "stage1a_partition": {
+      "name": "federated_iid_5clients_seed20260720",
+      "root": "data/gtsrb/federated_iid_5clients_seed20260720",
+      "type": "image-level stratified IID",
+      "allocation_unit": "individual image",
+      "num_clients": 5,
+      "client_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "partition_seed": 20260720,
+      "stratify_by": "ClassId",
+      "client_source_samples": [
+        7842,
+        7842,
+        7841,
+        7842,
+        7842
+      ],
+      "client_train_samples": [
+        7060,
+        7060,
+        7059,
+        7060,
+        7060
+      ],
+      "client_validation_samples": [
+        782,
+        782,
+        782,
+        782,
+        782
+      ],
+      "total_federated_train_samples_per_round": 35299,
+      "global_validation_samples": 3910,
+      "all_clients_have_all_classes": true,
+      "clients_disjoint": true,
+      "client_union_equals_full_train": true,
+      "validation_split": {
+        "ratio": 0.1,
+        "method": "per-client per-class stratified random split",
+        "seed": 20260720,
+        "minimum_validation_samples_per_class": 1,
+        "minimum_training_samples_per_class": 1,
+        "global_validation": "concatenate five client validation subsets then shuffle",
+        "global_validation_shuffle_seed": 20261719
+      },
+      "known_limitation": {
+        "track_level_grouping": false,
+        "risk": "Frames from one GTSRB track may be split across training/validation or across clients.",
+        "reporting_rule": "Official test metrics are primary; validation is used only for checkpoint selection."
+      }
+    },
+    "input_pipeline": {
+      "image_size": [
+        32,
+        32
+      ],
+      "channels": 3,
+      "color_mode": "RGB",
+      "decode": {
+        "function": "tf.io.decode_image",
+        "channels": 3,
+        "expand_animations": false
+      },
+      "resize": {
+        "function": "tf.image.resize",
+        "size": [
+          32,
+          32
+        ],
+        "antialias": true
+      },
+      "normalization": {
+        "dtype": "float32",
+        "formula": "tf.cast(image, tf.float32) / 255.0",
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      "labels": {
+        "dtype": "int32",
+        "encoding": "sparse integer class id"
+      },
+      "training_dataset": {
+        "shuffle": true,
+        "shuffle_buffer": "min(num_rows, 4096)",
+        "base_seed": 20260720,
+        "client_seed": "base_seed + client_id",
+        "reshuffle_each_iteration": true,
+        "repeat_count": 1,
+        "batch_size": 64,
+        "drop_remainder": false,
+        "map_num_parallel_calls": "tf.data.AUTOTUNE",
+        "map_deterministic": false,
+        "prefetch": "tf.data.AUTOTUNE"
+      },
+      "evaluation_dataset": {
+        "shuffle": false,
+        "repeat": false,
+        "batch_size": 64,
+        "drop_remainder": false,
+        "map_deterministic": true,
+        "prefetch": "tf.data.AUTOTUNE"
+      },
+      "augmentation": {
+        "enabled": false,
+        "horizontal_flip": false
+      },
+      "tff_structure": {
+        "container": "OrderedDict",
+        "features_key": "x",
+        "labels_key": "y",
+        "x_spec": "TensorSpec((None,32,32,3), tf.float32)",
+        "y_spec": "TensorSpec((None,), tf.int32)"
+      }
+    },
+    "model": {
+      "name": "GTSRB_CNN_NoBatchNorm",
+      "framework": "tf.keras.Sequential",
+      "input_shape": [
+        32,
+        32,
+        3
+      ],
+      "batch_normalization": false,
+      "layers": [
+        {
+          "type": "Input",
+          "shape": [
+            32,
+            32,
+            3
+          ]
+        },
+        {
+          "type": "Conv2D",
+          "filters": 32,
+          "kernel_size": [
+            3,
+            3
+          ],
+          "strides": [
+            1,
+            1
+          ],
+          "padding": "same",
+          "activation": "relu",
+          "use_bias": true
+        },
+        {
+          "type": "MaxPooling2D",
+          "pool_size": [
+            2,
+            2
+          ],
+          "strides": [
+            2,
+            2
+          ],
+          "padding": "valid"
+        },
+        {
+          "type": "Conv2D",
+          "filters": 64,
+          "kernel_size": [
+            3,
+            3
+          ],
+          "strides": [
+            1,
+            1
+          ],
+          "padding": "same",
+          "activation": "relu",
+          "use_bias": true
+        },
+        {
+          "type": "MaxPooling2D",
+          "pool_size": [
+            2,
+            2
+          ],
+          "strides": [
+            2,
+            2
+          ],
+          "padding": "valid"
+        },
+        {
+          "type": "Conv2D",
+          "filters": 128,
+          "kernel_size": [
+            3,
+            3
+          ],
+          "strides": [
+            1,
+            1
+          ],
+          "padding": "same",
+          "activation": "relu",
+          "use_bias": true
+        },
+        {
+          "type": "GlobalAveragePooling2D"
+        },
+        {
+          "type": "Dropout",
+          "rate": 0.25
+        },
+        {
+          "type": "Dense",
+          "units": 43,
+          "activation": null,
+          "use_bias": true
+        }
+      ],
+      "initializers": {
+        "conv_and_dense_kernel": "Keras default GlorotUniform",
+        "bias": "zeros"
+      },
+      "parameters": {
+        "trainable": 98795,
+        "non_trainable": 0,
+        "total": 98795,
+        "dtype": "float32",
+        "estimated_bytes": 395180
+      },
+      "reason_no_batchnorm": "Stage 1A FedAvg global inference failed because BatchNorm moving statistics were not maintained correctly."
+    },
+    "objective": {
+      "loss": {
+        "class": "SparseCategoricalCrossentropy",
+        "from_logits": true
+      },
+      "metric": {
+        "class": "SparseCategoricalAccuracy",
+        "name": "accuracy"
+      },
+      "checkpoint_selection": {
+        "metric": "global validation accuracy",
+        "mode": "max",
+        "test_set_used_for_selection": false
+      }
+    },
+    "fedavg": {
+      "algorithm": "Weighted FedAvg",
+      "builder": "tff.learning.algorithms.build_weighted_fed_avg",
+      "num_clients": 5,
+      "clients_per_round": 5,
+      "client_fraction": 1.0,
+      "sampling": "all clients every round",
+      "client_weighting": "NUM_EXAMPLES",
+      "local_epochs": 1,
+      "batch_size": 64,
+      "max_rounds": 160,
+      "evaluate_every_rounds": 1,
+      "checkpoint_every_rounds": 1,
+      "client_optimizer": {
+        "builder": "tff.learning.optimizers.build_adam",
+        "learning_rate": 0.001,
+        "state_persistent_across_rounds": false,
+        "other_parameters": "TFF 0.87.0 defaults; not explicitly overridden in Stage 1A"
+      },
+      "server_optimizer": {
+        "builder": "tff.learning.optimizers.build_sgdm",
+        "learning_rate": 1.0,
+        "momentum": null,
+        "stateful_momentum": false
+      },
+      "aggregator_stateful": false,
+      "randomness": {
+        "global_seed": 20260720,
+        "python_seed": 20260720,
+        "numpy_seed": 20260720,
+        "tensorflow_seed": 20260720,
+        "model_fn_graph_seed": 20260720,
+        "enable_op_determinism": false
+      }
+    },
+    "checkpointing": {
+      "best_model": {
+        "format": "HDF5",
+        "path": "outputs/stage1a/fedavg_nobn_seed20260720/global_models/best_global_model.h5"
+      },
+      "last_model": {
+        "format": "HDF5",
+        "path": "outputs/stage1a/fedavg_nobn_seed20260720/global_models/last_global_model.h5"
+      },
+      "round_weights": {
+        "format": "NumPy NPZ",
+        "pattern": "outputs/stage1a/fedavg_nobn_seed20260720/checkpoints/model_weights_round_{round:06d}.npz"
+      },
+      "run_state": "outputs/stage1a/fedavg_nobn_seed20260720/run_state.json",
+      "resume_exact_for_current_baseline": true,
+      "resume_exactness_conditions": [
+        "server SGDM has no momentum",
+        "server learning rate is 1.0",
+        "aggregator is stateless weighted mean"
+      ],
+      "resume_not_valid_after_switching_to": [
+        "server momentum",
+        "FedAdam",
+        "FedYogi",
+        "stateful aggregation"
+      ]
+    },
+    "communication": {
+      "scope": "parameter payload estimate only",
+      "single_model_bytes": 395180,
+      "round_formula": "2 * 5 * 395180",
+      "round_bytes": 3951800,
+      "total_bytes_at_160_rounds": 632288000,
+      "excluded": [
+        "protocol headers",
+        "serialization overhead",
+        "TLS",
+        "retransmissions",
+        "checkpoint filesystem traffic"
+      ]
+    },
+    "evaluation": {
+      "validation_every_round": true,
+      "official_test_after_training": true,
+      "best_round": 152,
+      "run_completed_rounds": 160,
+      "final_report_model": "best_global_model.h5"
+    },
+    "paths": {
+      "source_root": "src/gtsrb_1a",
+      "pipeline_script": "src/gtsrb_1a/gtsrb_data_pipeline.py",
+      "training_script": "src/gtsrb_1a/train_fedavg.py",
+      "output_root": "outputs/stage1a/fedavg_nobn_seed20260720",
+      "metrics_csv": "outputs/stage1a/fedavg_nobn_seed20260720/metrics.csv",
+      "test_metrics_json": "outputs/stage1a/fedavg_nobn_seed20260720/test_metrics.json",
+      "per_class_accuracy_csv": "outputs/stage1a/fedavg_nobn_seed20260720/per_class_accuracy.csv",
+      "confusion_matrix_csv": "outputs/stage1a/fedavg_nobn_seed20260720/confusion_matrix.csv",
+      "best_round_weights": "outputs/stage1a/fedavg_nobn_seed20260720/checkpoints/model_weights_round_000152.npz"
+    }
+  },
+  "stage1a_reference_results": {
+    "informational_only": true,
+    "best_round": 152,
+    "best_validation_accuracy": 0.995652198791504,
+    "test_loss": 0.3920920789241791,
+    "test_accuracy": 0.9260491132736206,
+    "overall_accuracy_from_predictions": 0.926049089469517,
+    "macro_class_accuracy": 0.8944054269140216,
+    "num_test_samples": 12630
+  },
+  "stage1b_template": {
+    "experiment": {
+      "name": "REPLACE_ME",
+      "stage1b_substage": "REPLACE_ME",
+      "notes": ""
+    },
+    "partition": {
+      "type": "dirichlet_label_skew",
+      "dirichlet_alpha": null,
+      "partition_seed": 20260720,
+      "num_clients": 5,
+      "num_classes": 43,
+      "minimum_samples_per_client": null,
+      "minimum_classes_per_client": null,
+      "max_resampling_attempts": null,
+      "output_root": "REPLACE_ME",
+      "realized_client_sample_counts": [],
+      "realized_client_class_distribution": "Save client_distribution.csv with client_id,class_id,sample_count"
+    },
+    "must_match_frozen_configuration_sha256": "beec4563cac296b159764c79a71d5066f1428559c8ba8d9a4ede5a87d07ed534",
+    "preflight_checks": [
+      "Compare runtime arguments and source settings with frozen_configuration.",
+      "Abort if a forbidden control variable differs.",
+      "Copy the resolved JSON into the experiment output directory.",
+      "Save exact client manifests and client_distribution.csv.",
+      "Use the unchanged official global_test.csv.",
+      "Record frozen_configuration_sha256 in the result JSON."
+    ]
+  }
+}

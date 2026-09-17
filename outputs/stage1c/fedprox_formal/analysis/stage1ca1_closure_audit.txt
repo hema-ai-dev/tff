@@ -1,0 +1,16 @@
+Stage 1C-A1 closure audit
+========================================================================================
+alpha01_summary_exists                 = True
+alpha05_summary_exists                 = True
+cross_csv_exists                       = True
+cross_json_exists                      = True
+cross_markdown_exists                  = True
+report_exists                          = True
+manifest_json_exists                   = True
+manifest_csv_exists                    = True
+all_pairs_comparable                   = True
+all_initial_checkpoints_exact          = True
+
+ alpha  mu0_best_val_accuracy  mu0p1_best_val_accuracy  best_val_accuracy_delta_pp  mu0_test_accuracy  mu0p1_test_accuracy  test_accuracy_delta_pp  mu0_macro_class_accuracy  mu0p1_macro_class_accuracy  macro_class_accuracy_delta_pp  mu0_test_loss  mu0p1_test_loss  test_loss_delta  improved_classes  declined_classes  unchanged_classes  mean_class_delta_pp  zero_classes_mu0  zero_classes_mu0p1  pair_config_comparable  initial_checkpoint_exact
+   0.1               0.890216                 0.946379                    5.616266           0.775059             0.845210                7.015043                  0.735995                    0.807860                       7.186465       0.723341         0.533059        -0.190282                33                 9                  1             7.186465                 1                   0                    True                      True
+   0.5               0.980671                 0.994914                    1.424211           0.873555             0.918131                4.457641                  0.824559                    0.878022                       5.346360       0.494126         0.346118        -0.148008                32                 6                  5             5.346360                 0                   0                    True                      True

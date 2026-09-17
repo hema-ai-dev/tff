@@ -1,0 +1,18 @@
+{
+  "num_completed_clients": 5,
+  "client_ids": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "mean_test_accuracy": 0.6010609626770019,
+  "std_test_accuracy_population": 0.0102890055439198,
+  "min_test_accuracy": 0.5876484513282776,
+  "max_test_accuracy": 0.6140934228897095,
+  "mean_macro_class_accuracy": 0.4967375448092334,
+  "std_macro_class_accuracy_population": 0.013678154448070457,
+  "std_test_accuracy_sample": 0.011503457908538435,
+  "std_macro_class_accuracy_sample": 0.01529264157631333
+}

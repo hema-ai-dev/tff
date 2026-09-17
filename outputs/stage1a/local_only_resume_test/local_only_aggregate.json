@@ -1,0 +1,12 @@
+{
+  "num_completed_clients": 1,
+  "client_ids": [
+    0
+  ],
+  "mean_test_accuracy": 0.05360253527760506,
+  "std_test_accuracy_population": 0.0,
+  "min_test_accuracy": 0.05360253527760506,
+  "max_test_accuracy": 0.05360253527760506,
+  "mean_macro_class_accuracy": 0.029603955476048497,
+  "std_macro_class_accuracy_population": 0.0
+}

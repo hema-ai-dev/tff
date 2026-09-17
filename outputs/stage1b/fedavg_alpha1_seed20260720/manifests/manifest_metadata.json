@@ -1,0 +1,23 @@
+{
+  "source_partition_dir": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_dirichlet_alpha1_5clients_seed20260720",
+  "official_test_csv": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/Test.csv",
+  "num_clients": 5,
+  "client_train_sizes": [
+    6942,
+    9576,
+    6544,
+    5966,
+    6255
+  ],
+  "client_val_sizes": [
+    776,
+    1065,
+    725,
+    664,
+    696
+  ],
+  "global_val_samples": 3926,
+  "global_test_samples": 12630,
+  "val_ratio": 0.1,
+  "seed": 20260720
+}

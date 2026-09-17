@@ -1,0 +1,21 @@
+{
+  "data_root": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb",
+  "split_root": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_iid_5clients_seed20260720",
+  "output_dir": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/centralized_resume_test",
+  "epochs": 3,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "val_ratio": 0.1,
+  "seed": 20260720,
+  "num_classes": 43,
+  "samples": {
+    "train": 35288,
+    "val": 3921,
+    "test": 12630
+  },
+  "tensorflow_version": "2.14.1",
+  "python_version": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "model_output": "43 logits",
+  "loss": "SparseCategoricalCrossentropy(from_logits=True)",
+  "metric": "SparseCategoricalAccuracy"
+}

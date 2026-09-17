@@ -1,0 +1,5 @@
+{
+  "completed_round": 30,
+  "weights_checkpoint": "checkpoints/model_weights_round_000030.npz",
+  "checkpoint_format": "TFF ModelWeights stored as NumPy NPZ"
+}

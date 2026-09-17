@@ -1,0 +1,47 @@
+[
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/alpha01/alpha01_classification_summary.json",
+    "size_bytes": 18411,
+    "sha256": "8fe1bb8146e2e1e120c06aa64d0dd1b477d267617bbcf5d5428add8391d5fbae"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/alpha05/alpha05_classification_summary.json",
+    "size_bytes": 18242,
+    "sha256": "2685e2d82cbcd7440b1ab95eb8826e5a2543b2186f25d484814c0458e7148478"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.csv",
+    "size_bytes": 962,
+    "sha256": "c57537d705dc014ff637b685ed9fb6c3d21f49191c6da3fb5f0cc64598521cff"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.json",
+    "size_bytes": 1740,
+    "sha256": "ecebba370e20491da52d35ce9daf8917162b70ac0a68dbf2411153c40246bc0b"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/stage1ca1_cross_alpha_summary.md",
+    "size_bytes": 664,
+    "sha256": "319ea3b8341ce2ddc757c469290bc9f95c87a322674ffa627e0438d727d80088"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/plots/stage1ca1_test_accuracy_gain_by_alpha.png",
+    "size_bytes": 34689,
+    "sha256": "57ef80788deb8cf203214fa6f18e15974ba76327bd7a051717706c8c5939d1cb"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/plots/stage1ca1_macro_accuracy_gain_by_alpha.png",
+    "size_bytes": 35840,
+    "sha256": "e549a9981e0afd0a5a7bd8d4b01cac665ff986c567cf76c58875c5f556dfa22b"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/Stage1C_A1_FedProx_Technical_Report_v1.0.md",
+    "size_bytes": 4637,
+    "sha256": "3c805462d1e648354322ff8539be1d722daefda5aa1177aa9f21385fe8b7839e"
+  },
+  {
+    "path": "outputs/stage1c/fedprox_formal/analysis/alpha05/alpha05_integrity_and_pair_audit.txt",
+    "size_bytes": 5169,
+    "sha256": "cc4cf23c7580d96eebd69b7a802686ec4187e0e8c506eed91e24bb6058ff61d8"
+  }
+]

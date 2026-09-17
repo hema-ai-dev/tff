@@ -1,0 +1,8 @@
+scripts/stage1c/run_mu0_equivalence.sh
+scripts/stage1c/run_mu0_equivalence_v1.2.sh
+scripts/stage1c/run_mu0_equivalence_v1.2.sh:Zone.Identifier
+src/gtsrb_1c/fedprox/__pycache__/train_fedprox_stage1c.cpython-310.pyc
+src/gtsrb_1c/fedprox/train_fedprox_stage1c.py
+tools/__pycache__/bootstrap_stage1c_fedprox.cpython-310.pyc
+tools/bootstrap_stage1c_fedprox.py
+tools/compare_fedavg_fedprox_mu0.py

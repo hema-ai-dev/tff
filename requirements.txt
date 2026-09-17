@@ -1,0 +1,14 @@
+tensorflow==2.14.1
+tensorflow-federated==0.87.0
+
+numpy
+pandas
+matplotlib
+scikit-learn
+tqdm
+pyyaml
+
+tensorboard
+tensorflow-privacy
+
+jupyter

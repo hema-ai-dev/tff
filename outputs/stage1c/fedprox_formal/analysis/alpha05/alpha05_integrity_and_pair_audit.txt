@@ -1,0 +1,89 @@
+
+================================================================================================
+alpha05_mu0
+outputs/stage1c/fedprox_formal/alpha05/sgd_lr0p1_mu0_alpha05_160r_seed20260720
+================================================================================================
+config.json                                                present=True
+run_state.json                                             present=True
+run_summary.json                                           present=True
+metrics.csv                                                present=True
+test_metrics.json                                          present=True
+per_class_accuracy.csv                                     present=True
+confusion_matrix.csv                                       present=True
+global_models/best_global_model.h5                         present=True
+global_models/last_global_model.h5                         present=True
+checkpoints/model_weights_round_000160.npz                 present=True
+completed_round             = 160
+metrics_rows                = 160
+rounds_contiguous           = True
+all_core_finite             = True
+non_finite_update_total     = 0.0
+dirichlet_alpha             = 0.5
+proximal_strength           = 0.0
+best_round                  = 157
+best_val_accuracy           = 0.980671405792
+test_loss                   = 0.494125783443
+test_accuracy               = 0.873555004597
+macro_class_accuracy        = 0.824558781583
+confusion_accuracy          = 0.873555027712
+num_test_samples            = 12630
+[PASS] alpha05_mu0 完整性审计通过。
+
+================================================================================================
+alpha05_mu0p1
+outputs/stage1c/fedprox_formal/alpha05/sgd_lr0p1_mu0p1_alpha05_160r_seed20260720
+================================================================================================
+config.json                                                present=True
+run_state.json                                             present=True
+run_summary.json                                           present=True
+metrics.csv                                                present=True
+test_metrics.json                                          present=True
+per_class_accuracy.csv                                     present=True
+confusion_matrix.csv                                       present=True
+global_models/best_global_model.h5                         present=True
+global_models/last_global_model.h5                         present=True
+checkpoints/model_weights_round_000160.npz                 present=True
+completed_round             = 160
+metrics_rows                = 160
+rounds_contiguous           = True
+all_core_finite             = True
+non_finite_update_total     = 0.0
+dirichlet_alpha             = 0.5
+proximal_strength           = 0.1
+best_round                  = 157
+best_val_accuracy           = 0.994913518429
+test_loss                   = 0.346118211746
+test_accuracy               = 0.918131411076
+macro_class_accuracy        = 0.878022383517
+confusion_accuracy          = 0.918131433096
+num_test_samples            = 12630
+[PASS] alpha05_mu0p1 完整性审计通过。
+
+================================================================================================
+配对实验可比性检查
+================================================================================================
+partition_dir                  equal=True | mu0='/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_dirichlet_alpha05_5clients_seed20260720' | mu0p1='/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_dirichlet_alpha05_5clients_seed20260720'
+partition_type                 equal=True | mu0='dirichlet_label_skew' | mu0p1='dirichlet_label_skew'
+dirichlet_alpha                equal=True | mu0=0.5 | mu0p1=0.5
+partition_base_seed            equal=True | mu0=20260720 | mu0p1=20260720
+partition_derived_seed         equal=True | mu0=240286222 | mu0p1=240286222
+num_clients                    equal=True | mu0=5 | mu0p1=5
+rounds                         equal=True | mu0=160 | mu0p1=160
+local_epochs                   equal=True | mu0=1 | mu0p1=1
+batch_size                     equal=True | mu0=64 | mu0p1=64
+client_optimizer               equal=True | mu0='sgd' | mu0p1='sgd'
+client_learning_rate           equal=True | mu0=0.1 | mu0p1=0.1
+client_momentum                equal=True | mu0=0.0 | mu0p1=0.0
+server_optimizer               equal=True | mu0='SGDM' | mu0p1='SGDM'
+server_learning_rate           equal=True | mu0=1.0 | mu0p1=1.0
+client_weighting               equal=True | mu0='NUM_EXAMPLES' | mu0p1='NUM_EXAMPLES'
+
+================================================================================================
+审计后的初步正式对比
+================================================================================================
+best validation accuracy delta = +1.424211 percentage points
+test accuracy delta           = +4.457641 percentage points
+macro accuracy delta          = +5.346360 percentage points
+test loss delta               = -0.148007571697
+
+[PASS] α=0.5 的 μ=0 与 μ=0.1 均通过完整性与配对可比性审计。

@@ -1,0 +1,21 @@
+{
+  "num_clients": 5,
+  "client_train_sizes": [
+    7060,
+    7060,
+    7059,
+    7060,
+    7060
+  ],
+  "client_val_sizes": [
+    782,
+    782,
+    782,
+    782,
+    782
+  ],
+  "global_val_samples": 3910,
+  "global_test_samples": 12630,
+  "val_ratio": 0.1,
+  "seed": 20260720
+}

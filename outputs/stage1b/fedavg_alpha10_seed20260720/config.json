@@ -1,0 +1,94 @@
+{
+  "data_root": "data/gtsrb",
+  "partition_dir": "data/gtsrb/federated_dirichlet_alpha10_5clients_seed20260720",
+  "output_dir": "outputs/stage1b/fedavg_alpha10_seed20260720",
+  "experiment_name": "stage1b_fedavg_alpha10_seed20260720",
+  "rounds": 160,
+  "local_epochs": 1,
+  "batch_size": 64,
+  "val_ratio": 0.1,
+  "client_optimizer": "adam",
+  "client_learning_rate": 0.001,
+  "client_momentum": 0.0,
+  "server_learning_rate": 1.0,
+  "eval_every": 1,
+  "checkpoint_every": 5,
+  "seed": 20260720,
+  "max_concurrent_calls": 1,
+  "resume": true,
+  "overwrite": false,
+  "resolved_data_root": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb",
+  "resolved_partition_dir": "/home/hema/projects/tff_mnist_fedavg/data/gtsrb/federated_dirichlet_alpha10_5clients_seed20260720",
+  "resolved_output_dir": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1b/fedavg_alpha10_seed20260720",
+  "partition": {
+    "partition_type": "dirichlet_label_skew",
+    "alpha": 10.0,
+    "base_seed": 20260720,
+    "derived_seed": 4041360971,
+    "successful_attempt": 1,
+    "mean_js_divergence_to_global": 0.008459824517707932,
+    "client_summary": {
+      "client_0": {
+        "total_samples": 8558,
+        "present_classes": 43,
+        "nonzero_classes": 43,
+        "largest_class_id": 1,
+        "largest_class_count": 568,
+        "largest_class_ratio": 0.0663706473475111,
+        "js_divergence_to_global": 0.006658586596605121
+      },
+      "client_1": {
+        "total_samples": 7887,
+        "present_classes": 43,
+        "nonzero_classes": 43,
+        "largest_class_id": 4,
+        "largest_class_count": 565,
+        "largest_class_ratio": 0.07163687080005071,
+        "js_divergence_to_global": 0.005732721390724201
+      },
+      "client_2": {
+        "total_samples": 7063,
+        "present_classes": 43,
+        "nonzero_classes": 43,
+        "largest_class_id": 5,
+        "largest_class_count": 420,
+        "largest_class_ratio": 0.05946481665014866,
+        "js_divergence_to_global": 0.009055162284749596
+      },
+      "client_3": {
+        "total_samples": 7854,
+        "present_classes": 43,
+        "nonzero_classes": 43,
+        "largest_class_id": 13,
+        "largest_class_count": 576,
+        "largest_class_ratio": 0.07333842627960276,
+        "js_divergence_to_global": 0.007424658872897309
+      },
+      "client_4": {
+        "total_samples": 7847,
+        "present_classes": 43,
+        "nonzero_classes": 43,
+        "largest_class_id": 2,
+        "largest_class_count": 666,
+        "largest_class_ratio": 0.0848731999490251,
+        "js_divergence_to_global": 0.013427993443563432
+      }
+    }
+  },
+  "tensorflow_version": "2.14.1",
+  "tff_version": "0.87.0",
+  "python_version": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "num_classes": 43,
+  "client_train_sizes": [
+    7700,
+    7098,
+    6356,
+    7068,
+    7062
+  ],
+  "model_output": "43 logits",
+  "loss": "SparseCategoricalCrossentropy(from_logits=True)",
+  "metric": "SparseCategoricalAccuracy",
+  "checkpoint_mode": "global ModelWeights NPZ; FileProgramStateManager disabled because of TensorFlow SavedModel _DictWrapper incompatibility"
+}

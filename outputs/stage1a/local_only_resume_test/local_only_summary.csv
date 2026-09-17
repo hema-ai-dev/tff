@@ -1,0 +1,2 @@
+client_id,source_local_samples,train_samples,val_samples,test_samples,best_epoch,best_val_accuracy,test_loss,test_accuracy,overall_accuracy_from_predictions,macro_class_accuracy,selected_checkpoint
+0,7842,7060,782,12630,3,0.0588235296308994,4.083308696746826,0.05360253527760506,0.053602533650039585,0.029603955476048497,/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/local_only_resume_test/client_0/checkpoints/best.h5

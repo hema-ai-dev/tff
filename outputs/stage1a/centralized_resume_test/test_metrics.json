@@ -1,0 +1,8 @@
+{
+  "loss": 0.6114388704299927,
+  "accuracy": 0.8482185006141663,
+  "overall_accuracy_from_predictions": 0.8482185273159145,
+  "macro_class_accuracy": 0.7783610932003249,
+  "selected_checkpoint": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/centralized_resume_test/checkpoints/best.h5",
+  "num_test_samples": 12630
+}

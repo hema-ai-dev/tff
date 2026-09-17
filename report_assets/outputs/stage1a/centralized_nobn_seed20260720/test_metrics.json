@@ -1,0 +1,8 @@
+{
+  "loss": 0.42546963691711426,
+  "accuracy": 0.9116389751434326,
+  "overall_accuracy_from_predictions": 0.9116389548693586,
+  "macro_class_accuracy": 0.8843682430927126,
+  "selected_checkpoint": "/home/hema/projects/tff_mnist_fedavg/outputs/stage1a/centralized_nobn_seed20260720/checkpoints/best.h5",
+  "num_test_samples": 12630
+}

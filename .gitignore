@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.venv/
+venv/
+
+# Sensitive
+kaggle.json
+
+# Large files
+*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary
+*.log
